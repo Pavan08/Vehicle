@@ -8,5 +8,5 @@ import lombok.Data;
 @Data
 public class VehicleListDTO {
 
-	public List<Vehicle> vehicle;
+	private List<Vehicle> vehicle;
 }

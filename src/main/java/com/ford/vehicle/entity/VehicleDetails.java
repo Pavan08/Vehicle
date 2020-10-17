@@ -12,15 +12,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VehicleDetails {
-	public String make;
-	public String model;
-	public String modelYear;
-	public String bodyStyle;
-	public String engine;
-	public String drivetype;
-	public String color;
+	private String make;
+	private String model;
+	private Long modelYear;
+	private String bodyStyle;
+	private String engine;
+	private String drivetype;
+	private String color;
 	@JsonProperty("MPG")
-	public String mPG;
-	public VehicleFeature vehicleFeature;
-	public List<VehiclePrice> vehiclePrice;
+	private String mPG;
+	private VehicleFeature vehicleFeature;
+	private List<VehiclePrice> vehiclePrice;
 }

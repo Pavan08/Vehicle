@@ -1,6 +1,5 @@
 package com.ford.vehicle.entity;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,8 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Document
 public class Vehicle {
+	
 	@Id
-	private ObjectId _id;
-	public String vehicleId;
-	public VehicleDetails vehicleDetails;
+	private Long vehicleId;
+	
+	private VehicleDetails vehicleDetails;
 }

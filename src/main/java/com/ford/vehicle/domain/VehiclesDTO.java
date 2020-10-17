@@ -4,6 +4,6 @@ import lombok.Data;
 @Data
 public class VehiclesDTO {
 	
-	 public VehicleListDTO vehicles;
+	 private VehicleListDTO vehicles;
 	 
 }

@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class VehicleFeature {
 
 	@JsonProperty("Exterior")
-	public List<String> exterior;
+	private List<String> exterior;
 	
 	@JsonProperty("Interior")
-	public List<String> interior;
+	private List<String> interior;
 
 }

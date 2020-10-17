@@ -2,6 +2,7 @@ package com.ford.vehicle.controller;
 
 import java.util.Objects;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ford.vehicle.domain.VehiclesDTO;
-import com.ford.vehicle.exception.VehicleException;
+import com.ford.vehicle.exception.VehicleValidationException;
 import com.ford.vehicle.service.VehicleService;
 
 @RestController
@@ -28,7 +29,7 @@ public class VehicleServiceController {
 		if (Objects.isNull(vehiclesDTO) || Objects.isNull(vehiclesDTO.getVehicles())
 				|| CollectionUtils.isEmpty(vehiclesDTO.getVehicles().getVehicle())) {
 
-			throw new VehicleException("Invalid request");
+			throw new VehicleValidationException("Invalid vehicles details");
 		}
 
 		return new ResponseEntity<>(vehicleService.submitVehicle(vehiclesDTO), HttpStatus.OK);
@@ -55,6 +56,13 @@ public class VehicleServiceController {
 	@GetMapping("/getVehicleByFeatures/{exterior}/{interior}")
 	public ResponseEntity<VehiclesDTO> getVehicleByFeatures(@PathVariable String exterior,
 			@PathVariable String interior) {
+		if (StringUtils.isBlank(exterior) || StringUtils.isBlank(interior) || exterior.length() < 3
+				|| interior.length() < 3) {
+
+			throw new VehicleValidationException(
+					"Invalid exterior or interior input, Provide exterior and interior as minimum 3 letetrs");
+		}
+
 		return new ResponseEntity<>(vehicleService.getVehicleByFeatures(exterior, interior), HttpStatus.OK);
 	}
 

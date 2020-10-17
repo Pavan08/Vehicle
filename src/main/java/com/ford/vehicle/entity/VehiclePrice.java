@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 public class VehiclePrice {
 
 	@JsonProperty("MSRP")
-	public String mSRP;
+	private float mSRP;
 
 	@JsonProperty("Savings")
-	public String savings;
+	private float savings;
 
-	public String finalPrice;
+	private float finalPrice;
 }

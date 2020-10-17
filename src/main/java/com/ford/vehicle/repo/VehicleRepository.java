@@ -14,5 +14,10 @@ public interface VehicleRepository extends MongoRepository<Vehicle, String> {
 	@Query("{ 'vehicleDetails.vehiclePrice.finalPrice' : { $gt: ?0, $lt: ?1 } }")
 	List<Vehicle> findVehicleByPriceBetween(int from, int to);
 
-
+	@Query("{ 'vehicleDetails.model' :?0}")
+	List<Vehicle> findVehicleByModel(String model);
+	
+	
+	@Query(value = "{ $or: [ { 'vehicleDetails.vehicleFeature.exterior' : {$regex:?0} }, { 'vehicleDetails.vehicleFeature.interior' : {$regex:?0} } ] }")
+	List<Vehicle> findVehicleByFeature(String exterior, String interior);
 }
