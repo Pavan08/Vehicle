@@ -31,7 +31,7 @@ public class VehicleServiceImpl implements VehicleService {
 		StringBuilder buider = new StringBuilder();
 
 		for (Vehicle vehicle : vehiclesDTO.getVehicles().getVehicle()) {
-			vehicle = vehicleRepository.save(vehicle);
+			 vehicleRepository.save(vehicle);
 			buider.append(vehicle.getVehicleId() + ",");
 		}
 		log.debug("VehicleServiceImpl :: submitVehicle end");
